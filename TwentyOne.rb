@@ -20,7 +20,6 @@ require_relative "Card"
 			hit()
 		  elsif gets.chomp == "stop"
 			puts "Your total was " + $total.to_s
-			if $total < 
 		  end
 	  end
 	
