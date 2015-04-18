@@ -6,6 +6,7 @@ class Card
 		@suit = suit
 	end
 
+
 	def toString
 		if(@value.to_i == 1)
 			puts " _____ "
