@@ -50,14 +50,31 @@ class Cards
 	  end
 	  
 	end
-	
-	encoded = "\u2665".encode('utf-8')
-	
-	for i in 1..13
-	  n = String(i)
-	  $deck.push(Cards.new(n, "\u2665".encode('utf-8')  ) )
-	  puts $deck[i-1].toString
+
+
+	def createDeck()
+		for i in 1..13
+			n = String(i)
+			$deck.push(Cards.new(n, "\u2665".encode('utf-8')  ) )
+		end
+		for i in 1..13
+			n = String(i)
+			$deck.push(Cards.new(n, "\u2660".encode('utf-8')  ) )
+		end
+		for i in 1..13
+			n = String(i)
+			$deck.push(Cards.new(n, "\u2666".encode('utf-8')  ) )
+		end
+		for i in 1..13
+			n = String(i)
+			$deck.push(Cards.new(n, "\u2663".encode('utf-8')  ) )
+		end
 	end
+
+	def getCard(num)
+		return $deck[num]
+	end
+
 	
 
 	
