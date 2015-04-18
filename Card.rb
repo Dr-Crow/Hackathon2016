@@ -6,43 +6,43 @@ class Card
 		@suit = suit
 	end
 
-	def self.toString
-		if(@value == 1)
+	def toString
+		if(@value.to_i == 1)
 			puts " _____ "
 			puts "|" + "A" + "    |"
 			puts "|     |"
 			puts "|  " + @suit + "  |"
 			puts "|     |"
 			puts "|____" + "A" +  "|"
-		elsif(@value < 10)
+		elsif(@value.to_i  < 10)
 			puts " _____ "
 			puts "|" + @value + "    |"
 			puts "|     |"
 			puts "|  " + @suit + "  |"
 			puts "|     |"
 			puts "|____" + @value +  "|"
-		elsif (@value == 10)
+		elsif (@value.to_i  == 10)
 			puts " _____ "
 			puts "|" + @value + "   |"
 			puts "|     |"
 			puts "|  " + @suit + "  |"
 			puts "|     |"
 			puts "|___" + @value +  "|"
-		elsif(@value == 11)
+		elsif(@value.to_i  == 11)
 			puts " _____ "
 			puts "|" + "J" + "    |"
 			puts "|     |"
 			puts "|  " + @suit + "  |"
 			puts "|     |"
 			puts "|____" + "J" +  "|"
-		elsif(@value == 12)
+		elsif(@value.to_i  == 12)
 			puts " _____ "
 			puts "|" + "Q" + "    |"
 			puts "|     |"
 			puts "|  " + @suit + "  |"
 			puts "|     |"
 			puts "|____" + "Q" +  "|"
-		elsif(@value == 13)
+		elsif(@value.to_i  == 13)
 			puts " _____ "
 			puts "|" + "K" + "    |"
 			puts "|     |"
