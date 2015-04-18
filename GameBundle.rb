@@ -1,13 +1,30 @@
 $listOfWords = Array.new
-$listOfWords.push("Test")
+$listOfWords.push("test")
+$listOfWords.push("help")
+$listOfWords.push("monkey")
+$listOfWords.push("hackathon")
 
 $lettersGuessed = Array.new
-$lettersGuessed.push("A")
-$lettersGuessed.push("B")
 
-$word = $listOfWords.at(0)
-
+$wordNumber = rand($listOfWords.size)
+$word = $listOfWords.at($wordNumber)
 $wordLetters = $word.split(//)
+$blank = Array.new($word.size)
+
+$misses = 0
+#ssass
+$x1 = " "
+$x2 = " "
+$x3 = " "
+$x4 = " "
+$x5 = " "
+$x6 = " "
+$x7 = " "
+$x8 = " "
+$x9 = " "
+
+
+
 
 def hangMan()
   puts "Welcome To HangMan!"
@@ -22,132 +39,118 @@ def hangMan()
 end
 
 def hangManPlayer1()
-  puts "Do you want to guess first or do you want me to guess? [y/n]"
-  String order = gets.chop
-  if order == "y"
-    hangManPlayer1Guess
+  blanks
+  puts "Letters Guessed So Far: " + printLettersGuessed
+  puts
+  printOutPic
+  puts
+  puts printWord
+  puts $misses
+  while ($blank.include? '_') && ($misses <= 9)
+    hangManStep
+    $misses
   end
 
+  if $misses >= 10
+    puts "You lost!"
+  else
+    puts "You win!"
+  end
 end
 
-def hangManPlayer1Guess()
-  puts $listOfWords.at(0)
-  hangManGuessState()
+def hangManStep()
+  puts "Please enter a letter: "
+  String input = gets.chop
+  hangManGuessState(input)
 end
 
-def hangManGuessState()
+def hangManGuessState(new)
+  addToGuess(new)
   puts "Letters Guessed So Far: " + printLettersGuessed
-  puts $wordLetters
+  checkGuessVWord
+  puts
+  printOutPic
+  puts
 
+  puts printWord
+  puts
+
+end
+
+def printOutPic()
+  puts "     ___    "
+  puts "    |   " + $x1
+  puts "    |  " + $x3 + " " + $x2
+  puts "    |  " + $x6 + $x4 + $x5
+  puts "    |   " + $x7
+  puts "  	|  "+ $x8 + " " + $x9
+  puts "____|______"
+
+end
+
+def addToGuess(new)
+  $lettersGuessed.push(new)
 end
 
 def printLettersGuessed()
   return $lettersGuessed.inspect
 end
 
-def checkGuessVWord
+def checkGuessVWord()
+  count = false
  for x in 0 ... $lettersGuessed.size
+   for y in 0 ... $word.size
+     #puts "(" + $lettersGuessed.at(x) + ", " + $wordLetters.at(y) + ")"
+     if $lettersGuessed.at(x) == $wordLetters.at(y)
+        $blank[y] = $lettersGuessed[x]
+       count = true
 
+     end
+   end
  end
+  if count == false
+    $misses+=1
+    updatePic
+  end
+end
+
+def updatePic()
+  case $misses
+    when 1
+      $x1 = '|'
+    when 2
+      $x2 = ')'
+    when 3
+      $x3 = '('
+    when 4
+      $x4 = '|'
+    when 5
+      $x5 = '/'
+    when 6
+      $x6 = '\\'
+    when 7
+      $x7 = '|'
+    when 8
+      $x8 = '/'
+    when 9
+      $x9 = '\\'
+  end
 end
 
 def printWord()
+  return $blank.inspect
+end
 
+def blanks()
+  for i in 0 ... $blank.size
+    $blank[i] = '_'
+  end
 end
 
 def hangManPlayer2()
 
 end
-
-
 def ticTacToe()
-     puts "Your are X. Your opponent is O. The commands are as follows: \n"
-	 puts "\nTL to place an X in the top left spot"
-	 puts "TM to place an X in the top middle spot"
-	 puts "TR to place an X in the top right spot"
-	 puts "ML to place an X in the middle left spot"
-	 puts "M to place an X in the middle spot"
-	 puts "MR to place an X in the middle right spot"
-	 puts "BL to place an X in the bottom left spot"
-	 puts "BM to place an X in the bottom middle spot"
-	 puts "BR to place an X in the bottom right spot\n"
-	 gameLoop
-
-end
-
-def AImove()
-
-
-
-def gameLoop() 
-
-	x1 = [" ", " ", " "]
-	x2 = [" ", " ", " "]
-	x3 = [" ", " ", " "]
-	line1 = x1[0]+"|"+x1[1]+"|"+x1[2]
-	line2 = x2[0]+"|"+x2[1]+"|"+x2[2]
-	line3 = x3[0]+"|"+x3[1]+"|"+x3[2]
-
-	canRun = true
-	
-	while canRun == true
-		line1 = x1[0]+"|"+x1[1]+"|"+x1[2]
-		line2 = x2[0]+"|"+x2[1]+"|"+x2[2]
-		line3 = x3[0]+"|"+x3[1]+"|"+x3[2]
-		puts "\n" + line1
-		puts "------"
-		puts line2
-		puts "------"
-		puts line3 + "\n"
-		puts "\nIt's your turn."
-		move = gets.upcase.chomp
-		case move
-			when "TL"
-			x1[0] = "X"
-			when "TM"
-			x1[1] = "X"
-			when "TR"
-			x1[2] = "X"
-			when "ML"
-			x2[0] = "X"
-			when "M"
-			x2[1] = "X"
-			when "MR"
-			x2[2] = "X"
-			when "BL"
-			x3[0] = "X"
-			when "BM"
-			x3[1] = "X"
-			when "BR"
-			x3[2] = "X"
-		end		
-		
-		if x1[0] == "X" and x1[1] == "X" and x1[2] == "X"
-			canRun = false
-		elsif x2[0] == "X" and x2[1] == "X" and x2[2] == "X" 
-			canRun = false
-		elsif x3[0] == "X" and x3[1] == "X" and x3[2] == "X" 
-			canRun = false
-		elsif x1[0] == "X" and x2[0] == "X" and x3[0] == "X"
-			canRun = false
-		elsif x1[1] == "X" and x2[1] == "X" and x3[1] == "X"
-			canRun = false
-		elsif x1[2] == "X" and x2[2] == "X" and x3[2] == "X"
-			canRun = false
-		end
-		
-	end
-	
-		line1 = x1[0]+"|"+x1[1]+"|"+x1[2]
-		line2 = x2[0]+"|"+x2[1]+"|"+x2[2]
-		line3 = x3[0]+"|"+x3[1]+"|"+x3[2]
-		puts "\n" + line1
-		puts "------"
-		puts line2
-		puts "------"
-		puts line3 + "\n"
-	
-	puts "Congrats, you win!"
 
 end
 
@@ -163,5 +166,5 @@ gameNum = Integer(gets.chop)
 if gameNum == 1
   hangMan
 elsif gameNum == 2
-  ticTacToe
+  puts "Tic Tac Toe"
 end
