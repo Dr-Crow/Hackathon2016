@@ -61,6 +61,17 @@ end
 
 
 def ticTacToe()
+	
+	$canRun = true
+
+	puts "Would you like 1 or 2 players?"
+	players = gets.chomp
+	while players != "1" and players != "2"
+		"Invalid number of players. Would you like 1 or 2 players?"
+		players = gets.chomp
+	end
+	
+
      puts "Your are X. Your opponent is O. The commands are as follows: \n"
 	 puts "\nTL to place an X in the top left spot"
 	 puts "TM to place an X in the top middle spot"
@@ -71,7 +82,12 @@ def ticTacToe()
 	 puts "BL to place an X in the bottom left spot"
 	 puts "BM to place an X in the bottom middle spot"
 	 puts "BR to place an X in the bottom right spot\n"
-	 gameLoop
+	if players == "1"
+		gameLoop
+	end
+	if players == "2"
+		twoPlayerGameLoop
+	end
 
 end
 
@@ -177,11 +193,105 @@ end
 	line1 = $x1[0]+"|"+$x1[1]+"|"+$x1[2]
 	line2 = $x2[0]+"|"+$x2[1]+"|"+$x2[2]
 	line3 = $x3[0]+"|"+$x3[1]+"|"+$x3[2]
+	
+def twoPlayerGameLoop
+
+	while $canRun == true
+		line1 = $x1[0]+"|"+$x1[1]+"|"+$x1[2]
+		line2 = $x2[0]+"|"+$x2[1]+"|"+$x2[2]
+		line3 = $x3[0]+"|"+$x3[1]+"|"+$x3[2]
+		puts "\n" + line1
+		puts "------"
+		puts line2
+		puts "------"
+		puts line3 + "\n"
+		puts "Player one goes"
+		
+		move("X")
+		
+		line1 = $x1[0]+"|"+$x1[1]+"|"+$x1[2]
+		line2 = $x2[0]+"|"+$x2[1]+"|"+$x2[2]
+		line3 = $x3[0]+"|"+$x3[1]+"|"+$x3[2]
+		puts "\n" + line1
+		puts "------"
+		puts line2
+		puts "------"
+		puts line3 + "\n"
+		puts "Player two goes"
+		
+		move("O")
+		
+		#check lines with X wins variable
+		#check lines with O wins variable
+		
+	end
+
+end
+
+
+def move(sym)
+  		move = gets.upcase.chomp
+		case move
+			when "TL"
+				if $x1[0] == " "
+					$x1[0] = sym
+				else
+					puts "That spot is taken!"
+				end
+			when "TM"
+				if $x1[1] == " "
+					$x1[1] = sym
+				else
+					puts "That spot is taken!"
+				end
+			when "TR"
+				if $x1[2] == " "
+					$x1[2] = sym
+				else
+					puts "That spot is taken!"
+				end
+			when "ML"
+				if $x2[0] == " "
+					$x2[0] = sym
+				else
+					puts "That spot is taken!"
+				end
+			when "M"
+				if $x2[1] == " "
+					$x2[1] = sym
+				else
+					puts "That spot is taken!"
+				end
+			when "MR"
+				if $x2[2] == " "
+					$x2[2] = sym
+				else
+					puts "That spot is taken!"
+				end
+			when "BL"
+				if $x3[0] == " "
+					$x3[0] = sym
+				else
+					puts "That spot is taken!"
+				end
+			when "BM"
+				if $x3[1] == " "
+					$x3[1] = sym
+				else
+					puts "That spot is taken!"
+				end
+			when "BR"
+				if $x3[2] == " "
+					$x3[2] = sym
+				else
+					puts "That spot is taken!"
+				end
+		end	
+end
 
 def gameLoop() 
 
 	$loss = false
-	$canRun = true
 	
 	while $canRun == true
 		line1 = $x1[0]+"|"+$x1[1]+"|"+$x1[2]
@@ -193,63 +303,8 @@ def gameLoop()
 		puts "------"
 		puts line3 + "\n"
 		puts "\nIt's your turn."
-		move = gets.upcase.chomp
-		case move
-			when "TL"
-				if $x1[0] == " "
-					$x1[0] = "X"
-				else
-					puts "That spot is taken!"
-				end
-			when "TM"
-				if $x1[1] == " "
-					$x1[1] = "X"
-				else
-					puts "That spot is taken!"
-				end
-			when "TR"
-				if $x1[2] == " "
-					$x1[2] = "X"
-				else
-					puts "That spot is taken!"
-				end
-			when "ML"
-				if $x2[0] == " "
-					$x2[0] = "X"
-				else
-					puts "That spot is taken!"
-				end
-			when "M"
-				if $x2[1] == " "
-					$x2[1] = "X"
-				else
-					puts "That spot is taken!"
-				end
-			when "MR"
-				if $x2[2] == " "
-					$x2[2] = "X"
-				else
-					puts "That spot is taken!"
-				end
-			when "BL"
-				if $x3[0] == " "
-					$x3[0] = "X"
-				else
-					puts "That spot is taken!"
-				end
-			when "BM"
-				if $x3[1] == " "
-					$x3[1] = "X"
-				else
-					puts "That spot is taken!"
-				end
-			when "BR"
-				if $x3[2] == " "
-					$x3[2] = "X"
-				else
-					puts "That spot is taken!"
-				end
-		end		
+		
+		move("X")
 		
 		puts "The AI is moving..."
 		AImove()
