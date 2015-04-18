@@ -1,85 +1,60 @@
-class Cards
-	$deck = []
+class Card
+	attr_accessor(:value, :suit)
+
 	def initialize(value, suit)
-	  @value = value
-	  @suit = suit
+		@value = value
+		@suit = suit
 	end
+
+
 	def toString
-	  if(Integer(@value) == 1)
-		  puts " _____ "
-		  puts "|" + "A" + "    |"
-		  puts "|     |"
-		  puts "|  " + @suit + "  |"
-		  puts "|     |"
-		  puts "|____" + "A" +  "|"
-	  elsif(Integer(@value) < 10)
-		  puts " _____ "
-		  puts "|" + @value + "    |"
-		  puts "|     |"
-		  puts "|  " + @suit + "  |"
-		  puts "|     |"
-		  puts "|____" + @value +  "|"
-	  elsif(Integer(@value) == 10)
-		  puts " _____ "
-		  puts "|" + @value + "   |"
-		  puts "|     |"
-		  puts "|  " + @suit + "  |"
-		  puts "|     |"
-		  puts "|___" + @value +  "|"
-	  elsif(Integer(@value) == 11)
-		  puts " _____ "
-		  puts "|" + "J" + "    |"
-		  puts "|     |"
-		  puts "|  " + @suit + "  |"
-		  puts "|     |"
-		  puts "|____" + "J" +  "|"
-	  elsif(Integer(@value) == 12)
-		  puts " _____ "
-		  puts "|" + "Q" + "    |"
-		  puts "|     |"
-		  puts "|  " + @suit + "  |"
-		  puts "|     |"
-		  puts "|____" + "Q" +  "|"
-	  elsif(Integer(@value) == 13)
-		  puts " _____ "
-		  puts "|" + "K" + "    |"
-		  puts "|     |"
-		  puts "|  " + @suit + "  |"
-		  puts "|     |"
-		  puts "|____" + "K" +  "|"
-	  end
-	  
+		if(@value.to_i == 1)
+			puts " _____ "
+			puts "|" + "A" + "    |"
+			puts "|     |"
+			puts "|  " + @suit + "  |"
+			puts "|     |"
+			puts "|____" + "A" +  "|"
+		elsif(@value.to_i  < 10)
+			puts " _____ "
+			puts "|" + @value + "    |"
+			puts "|     |"
+			puts "|  " + @suit + "  |"
+			puts "|     |"
+			puts "|____" + @value +  "|"
+		elsif (@value.to_i  == 10)
+			puts " _____ "
+			puts "|" + @value + "   |"
+			puts "|     |"
+			puts "|  " + @suit + "  |"
+			puts "|     |"
+			puts "|___" + @value +  "|"
+		elsif(@value.to_i  == 11)
+			puts " _____ "
+			puts "|" + "J" + "    |"
+			puts "|     |"
+			puts "|  " + @suit + "  |"
+			puts "|     |"
+			puts "|____" + "J" +  "|"
+		elsif(@value.to_i  == 12)
+			puts " _____ "
+			puts "|" + "Q" + "    |"
+			puts "|     |"
+			puts "|  " + @suit + "  |"
+			puts "|     |"
+			puts "|____" + "Q" +  "|"
+		elsif(@value.to_i  == 13)
+			puts " _____ "
+			puts "|" + "K" + "    |"
+			puts "|     |"
+			puts "|  " + @suit + "  |"
+			puts "|     |"
+			puts "|____" + "K" +  "|"
+		end
+
 	end
-
-
-	def createDeck()
-		for i in 1..13
-			n = String(i)
-			$deck.push(Cards.new(n, "\u2665".encode('utf-8')  ) )
-		end
-		for i in 1..13
-			n = String(i)
-			$deck.push(Cards.new(n, "\u2660".encode('utf-8')  ) )
-		end
-		for i in 1..13
-			n = String(i)
-			$deck.push(Cards.new(n, "\u2666".encode('utf-8')  ) )
-		end
-		for i in 1..13
-			n = String(i)
-			$deck.push(Cards.new(n, "\u2663".encode('utf-8')  ) )
-		end
-	end
-
-	def getCard(num)
-		return $deck[num]
-	end
-
-	
-
-	
-
 end
+
 
 =begin 
 	 \u2660 - black spade
