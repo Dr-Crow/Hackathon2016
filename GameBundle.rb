@@ -88,6 +88,10 @@ def ticTacToe()
 	if players == "2"
 		twoPlayerGameLoop
 	end
+	
+	$x1 = [" ", " ", " "]
+	$x2 = [" ", " ", " "]
+	$x3 = [" ", " ", " "]
 
 end
 
@@ -183,6 +187,12 @@ def AImove()
 		elsif $x1[2] == "O" and $x2[2] == "O" and $x3[2] == "O"
 			$loss = true
 			$canRun = false
+		elsif $x1[0] == "O" and $x2[1] == "O" and $x3[2] == "O"
+			$loss = true
+			$canRun = false
+		elsif $x1[3] == "O" and $x2[1] == "O" and $x3[0] == "O"
+			$loss = true
+			$canRun = false
 		end
 		
 end
@@ -196,7 +206,10 @@ end
 	
 def twoPlayerGameLoop
 
-	while $canRun == true
+	oWins = false
+	xWins = false
+
+	while oWins == false or xWins == false
 		line1 = $x1[0]+"|"+$x1[1]+"|"+$x1[2]
 		line2 = $x2[0]+"|"+$x2[1]+"|"+$x2[2]
 		line3 = $x3[0]+"|"+$x3[1]+"|"+$x3[2]
@@ -208,6 +221,32 @@ def twoPlayerGameLoop
 		puts "Player one goes"
 		
 		move("X")
+		
+		if $x1[0] == "X" and $x1[1] == "X" and $x1[2] == "X"
+			xWins = true
+			break
+		elsif $x2[0] == "X" and $x2[1] == "X" and $x2[2] == "X" 
+			xWins = true
+			break
+		elsif $x3[0] == "X" and $x3[1] == "X" and $x3[2] == "X" 
+			xWins = true
+			break
+		elsif $x1[0] == "X" and $x2[0] == "X" and $x3[0] == "X"
+			xWins = true
+			break
+		elsif $x1[1] == "X" and $x2[1] == "X" and $x3[1] == "X"
+			xWins = true
+			break
+		elsif $x1[2] == "X" and $x2[2] == "X" and $x3[2] == "X"
+			xWins = true
+			break
+		elsif $x1[0] == "X" and $x2[1] == "X" and $x3[2] == "X"
+			xWins = true
+			break
+		elsif $x1[3] == "X" and $x2[1] == "X" and $x3[0] == "X"
+			xWins = true
+			break
+		end
 		
 		line1 = $x1[0]+"|"+$x1[1]+"|"+$x1[2]
 		line2 = $x2[0]+"|"+$x2[1]+"|"+$x2[2]
@@ -221,10 +260,50 @@ def twoPlayerGameLoop
 		
 		move("O")
 		
-		#check lines with X wins variable
-		#check lines with O wins variable
+		
+		if $x1[0] == "O" and $x1[1] == "O" and $x1[2] == "O"
+			oWins = true
+			break
+		elsif $x2[0] == "O" and $x2[1] == "O" and $x2[2] == "O" 
+			oWins = true
+			break
+		elsif $x3[0] == "O" and $x3[1] == "O" and $x3[2] == "O" 
+			oWins = true
+			break
+		elsif $x1[0] == "O" and $x2[0] == "O" and $x3[0] == "O"
+			oWins = true
+			break
+		elsif $x1[1] == "O" and $x2[1] == "O" and $x3[1] == "O"
+			oWins = true
+			break
+		elsif $x1[2] == "O" and $x2[2] == "O" and $x3[2] == "O"
+			oWins = true
+			break
+		elsif $x1[0] == "O" and $x2[1] == "O" and $x3[2] == "O"
+			oWins = true
+			break
+		elsif $x1[3] == "O" and $x2[1] == "O" and $x3[0] == "O"
+			oWins = true
+			break
+		end	
 		
 	end
+	
+		line1 = $x1[0]+"|"+$x1[1]+"|"+$x1[2]
+		line2 = $x2[0]+"|"+$x2[1]+"|"+$x2[2]
+		line3 = $x3[0]+"|"+$x3[1]+"|"+$x3[2]
+		puts "\n" + line1
+		puts "------"
+		puts line2
+		puts "------"
+		puts line3 + "\n"
+		
+		if xWins == true
+			puts "Congrats Player 1!"
+		end
+		if oWins == true
+			puts "Congrats Player 2!"
+		end
 
 end
 
@@ -306,22 +385,35 @@ def gameLoop()
 		
 		move("X")
 		
+		if $x1[0] == "X" and $x1[1] == "X" and $x1[2] == "X"
+			$canRun = false 
+			break
+		elsif $x2[0] == "X" and $x2[1] == "X" and $x2[2] == "X" 
+			$canRun = false 
+			break
+		elsif $x3[0] == "X" and $x3[1] == "X" and $x3[2] == "X" 
+			$canRun = false 
+			break
+		elsif $x1[0] == "X" and $x2[0] == "X" and $x3[0] == "X"
+			$canRun = false 
+			break
+		elsif $x1[1] == "X" and $x2[1] == "X" and $x3[1] == "X"
+			$canRun = false 
+			break
+		elsif $x1[2] == "X" and $x2[2] == "X" and $x3[2] == "X"
+			$canRun = false 
+			break
+		elsif $x1[0] == "X" and $x2[1] == "X" and $x3[2] == "X"
+			$canRun = false 
+			break
+		elsif $x1[3] == "X" and $x2[1] == "X" and $x3[0] == "X"
+			$canRun = false 
+			break
+		end
+		
 		puts "The AI is moving..."
 		AImove()
-		
-		if $x1[0] == "X" and $x1[1] == "X" and $x1[2] == "X"
-			$canRun = false
-		elsif $x2[0] == "X" and $x2[1] == "X" and $x2[2] == "X" 
-			$canRun = false
-		elsif $x3[0] == "X" and $x3[1] == "X" and $x3[2] == "X" 
-			$canRun = false
-		elsif $x1[0] == "X" and $x2[0] == "X" and $x3[0] == "X"
-			$canRun = false
-		elsif $x1[1] == "X" and $x2[1] == "X" and $x3[1] == "X"
-			$canRun = false
-		elsif $x1[2] == "X" and $x2[2] == "X" and $x3[2] == "X"
-			$canRun = false
-		end
+	
 		
 	end
 	
@@ -342,17 +434,25 @@ def gameLoop()
 
 end
 
-puts "Welcome to Magenta Concrete Cult's Game Bundle"
-puts
+def BundleLoop()
+	puts "Welcome to Magenta Concrete Cult's Game Bundle"
+	gameNum = 0
+	
+	while gameNum != "q"
+		puts
+		puts "[1] HangMan [2] Tic Tac Toe [q] Quit" 
+		puts
+		puts "Please Enter a Number to Start the Game"
+		gameNum = Integer(gets.chop)
 
-puts "[1] HangMan [2] Tic Tac Toe"
-puts
-puts "Please Enter a Number to Start the Game"
-
-gameNum = Integer(gets.chop)
-
-if gameNum == 1
-  hangMan
-elsif gameNum == 2
-  ticTacToe
+		if gameNum == 1
+		  hangMan
+		elsif gameNum == 2
+		  ticTacToe
+		end
+	end
+	
+	puts "\nThanks for playing!"
 end
+
+BundleLoop()
