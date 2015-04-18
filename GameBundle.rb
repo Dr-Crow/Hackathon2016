@@ -40,6 +40,7 @@ end
 
 def hangManPlayer1()
   blanks
+  removeSpaces
   puts "Letters Guessed So Far: " + printLettersGuessed
   puts
   printOutPic
@@ -63,7 +64,8 @@ def hangManStep()
 end
 
 def hangManGuessState(new)
-  addToGuess(new)
+  new1 = new.downcase
+  addToGuess(new1)
   puts "Letters Guessed So Far: " + printLettersGuessed
   checkGuessVWord
   puts
@@ -92,6 +94,15 @@ end
 
 def printLettersGuessed()
   return $lettersGuessed.inspect
+end
+
+def removeSpaces()
+  for y in 0 ... $word.size
+    #puts "(" + $lettersGuessed.at(x) + ", " + $wordLetters.at(y) + ")"
+    if " " == $wordLetters.at(y)
+      $blank[y] = " "
+    end
+  end
 end
 
 def checkGuessVWord()
@@ -135,7 +146,13 @@ def updatePic()
 end
 
 def printWord()
-  return $blank.inspect
+  String word = ''
+
+  for i in 0 .. ($blank.size - 1)
+    word = word + $blank[i]
+  end
+
+  puts word
 end
 
 def blanks()
@@ -147,6 +164,8 @@ end
 def hangManPlayer2()
   puts "Player 2 Please Enter your word, make sure Player1 does not see: "
   $word = gets.chop
+  $word = $word.downcase
+  puts $word
   $wordLetters = $word.split(//)
   $blank = Array.new($word.size)
 
