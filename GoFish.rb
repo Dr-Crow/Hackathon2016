@@ -25,10 +25,8 @@ class GoFish
   end
 
   def goFishPlayer1()
-      # puts $deck
-      $deck.each do |card|
-        card.toString
-      end
+    generatePlayer1Hand()
+    displayHand()
 
   end
 
@@ -51,8 +49,8 @@ class GoFish
   end
 
   def displayHand()
-    for i in 0 ... ($player1Hand.size - 1)
-      puts $player1Hand[i]
+    $player1Hand.each do |card|
+      card.toString
     end
   end
 
