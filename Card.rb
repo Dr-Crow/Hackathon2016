@@ -58,16 +58,3 @@ end
 end
 
 end
-
-
-=begin 
-\u2660 - black spade
-\u2665 - black heart
-\u2666 - black diamond
-\u2663 - black club
-\u2664 - white spade
-\u2661 - white heart
-\u2662 - white diamond
-\u2667 - white club
-
-=end

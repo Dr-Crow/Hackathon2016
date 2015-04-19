@@ -1,7 +1,3 @@
-=begin
-Scott Hansen: my war game bombs
-=end
-
 class NumberGuesser
 def initialize
 

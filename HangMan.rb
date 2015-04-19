@@ -107,7 +107,6 @@ end
 
 def removeSpaces()
 for y in 0 ... $word.size
-#puts "(" + $lettersGuessed.at(x) + ", " + $wordLetters.at(y) + ")"
 if " " == $wordLetters.at(y)
 $blank[y] = " "
 end
@@ -117,7 +116,6 @@ end
 def checkGuessVWord()
 count = false
 for y in 0 ... $word.size
-#puts "(" + $lettersGuessed.at(x) + ", " + $wordLetters.at(y) + ")"
 if $lettersGuessed.at($lettersGuessed.size - 1) == $wordLetters.at(y)
 $blank[y] = $lettersGuessed[$lettersGuessed.size - 1]
 count = true
