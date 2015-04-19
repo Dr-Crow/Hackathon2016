@@ -129,7 +129,7 @@ class TicTacToe
     elsif $x1[0] == "O" and $x2[1] == "O" and $x3[2] == "O"
       $loss = true
       $canRun = false
-    elsif $x1[3] == "O" and $x2[1] == "O" and $x3[0] == "O"
+    elsif $x1[2] == "O" and $x2[1] == "O" and $x3[0] == "O"
       $loss = true
       $canRun = false
     end
@@ -182,7 +182,7 @@ class TicTacToe
       elsif $x1[0] == "X" and $x2[1] == "X" and $x3[2] == "X"
         xWins = true
         break
-      elsif $x1[3] == "X" and $x2[1] == "X" and $x3[0] == "X"
+      elsif $x1[2] == "X" and $x2[1] == "X" and $x3[0] == "X"
         xWins = true
         break
       end
@@ -221,7 +221,7 @@ class TicTacToe
       elsif $x1[0] == "O" and $x2[1] == "O" and $x3[2] == "O"
         oWins = true
         break
-      elsif $x1[3] == "O" and $x2[1] == "O" and $x3[0] == "O"
+      elsif $x1[2] == "O" and $x2[1] == "O" and $x3[0] == "O"
         oWins = true
         break
       end
@@ -345,7 +345,7 @@ class TicTacToe
       elsif $x1[0] == "X" and $x2[1] == "X" and $x3[2] == "X"
         $canRun = false
         break
-      elsif $x1[3] == "X" and $x2[1] == "X" and $x3[0] == "X"
+      elsif $x1[2] == "X" and $x2[1] == "X" and $x3[0] == "X"
         $canRun = false
         break
       end
