@@ -3,19 +3,24 @@ require_relative "TicTacToe"
 require_relative "HangMan"
 require_relative "GoFish"
 require_relative "TwentyOne"
+require_relative "War"
 
 $ticTacObj = TicTacToe.new
 $hangManObj = HangMan.new
 $GoFishObj = GoFish.new
 $twentyOneObj = TwentyOne.new
+$warObj = War.new
 
 def BundleLoop()
-	puts "Welcome to Magenta Concrete Cult's Game Bundle"
+    puts "***----------------------------------------------***"
+	puts "***Welcome to Magenta Concrete Cult's Game Bundle***"
+	puts "***----------------------------------------------***"
 	$gameNum = 0
 	
 	while $gameNum != "q"
 		puts
-		puts "[1] HangMan [2] Tic Tac Toe [3] Go-Fish [4] Twenty-One [5] War [6] Half-Life 3[q] Quit"
+		print "[1] HangMan [2] Tic Tac Toe [3] Go-Fish "
+		puts "[4] Twenty-One [5] War [6] Half-Life 3 [q] Quit"
 		puts
 		puts "Please Enter a Number to Start the Game"
 		$gameNum = gets.chop
@@ -28,7 +33,7 @@ def BundleLoop()
 	    elsif $gameNum.to_i == 4
 			$twentyOneObj.twentyOne
 		elsif $gameNum.to_i == 5
-		  puts "SCOTTTT"
+		  puts $warObj.warLoop
 		elsif $gameNum.to_i == 6
 		  puts "loljk"
 		end
