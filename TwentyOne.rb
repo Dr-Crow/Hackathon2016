@@ -1,5 +1,4 @@
 
-
 class TwentyOne
 require_relative "Card"
 	def initialize

@@ -11,22 +11,26 @@ $twentyOneObj = TwentyOne.new
 
 def BundleLoop()
 	puts "Welcome to Magenta Concrete Cult's Game Bundle"
-	gameNum = 0
+	$gameNum = 0
 	
-	while gameNum != "q"
+	while $gameNum != "q"
 		puts
-		puts "[1] HangMan [2] Tic Tac Toe [3] Go-Fish [4] Twenty-One [q] Quit"
+		puts "[1] HangMan [2] Tic Tac Toe [3] Go-Fish [4] Twenty-One [5] War [6] Half-Life 3[q] Quit"
 		puts
 		puts "Please Enter a Number to Start the Game"
-		gameNum = Integer(gets.chop)
-		if gameNum == 1
+		$gameNum = gets.chop
+		if $gameNum.to_i == 1
 		  $hangManObj.hangMan
-		elsif gameNum == 2
+		elsif $gameNum.to_i == 2
 		  $ticTacObj.ticTacToe
-		elsif gameNum == 3
+		elsif $gameNum.to_i == 3
 			$GoFishObj.goFish
-	    elsif gameNum == 4
+	    elsif $gameNum.to_i == 4
 			$twentyOneObj.twentyOne
+		elsif $gameNum.to_i == 5
+		  puts "SCOTTTT"
+		elsif $gameNum.to_i == 6
+		  puts "loljk"
 		end
 	end
 	
