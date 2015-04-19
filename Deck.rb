@@ -26,7 +26,4 @@ class Deck
     return $deck
   end
 
-  def getCard(num)
-    return @cards[num]
-  end
 end
