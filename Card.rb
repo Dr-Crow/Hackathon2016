@@ -6,6 +6,9 @@ class Card
 		@suit = suit
 	end
 
+	def getValue()
+		return @value.to_i
+	end
 
 	def toString
 		if(@value.to_i == 1)
@@ -53,6 +56,7 @@ class Card
 		end
 
 	end
+
 end
 
 
