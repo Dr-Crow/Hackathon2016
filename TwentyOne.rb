@@ -36,7 +36,7 @@ require_relative "Card"
 		if ($dealerNum > 21)
 			$dealerNum = 21
 		end
-		puts "The dealer totalled " + $dealerNum.to_s
+		puts "The dealer totaled " + $dealerNum.to_s
 		if $total <= $dealerNum
 			puts "Sorry, the dealer beat you!"
 		elsif $total > $dealerNum and $total <= 21
