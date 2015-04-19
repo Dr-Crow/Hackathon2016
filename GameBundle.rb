@@ -15,7 +15,7 @@ def BundleLoop()
 	
 	while gameNum != "q"
 		puts
-		puts "[1] HangMan [2] Tic Tac Toe [3] Go-Fish [4] Twenty-One[q] Quit"
+		puts "[1] HangMan [2] Tic Tac Toe [3] Go-Fish [4] Twenty-One [q] Quit"
 		puts
 		puts "Please Enter a Number to Start the Game"
 		gameNum = Integer(gets.chop)
