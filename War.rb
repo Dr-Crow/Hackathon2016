@@ -49,34 +49,51 @@ class Card
   #creates card deck for war
   def self.new_deck
     #deck that we will return
-    deck ||= Array.new
+    $deck ||= Array.new
     i = 2 #value of the card
     for x in 1..52
-      deck.push(Card.new(i, pick_suit(x)))
+      $deck.push(Card.new(i, pick_suit(x)))
       if i > 13 #onto next suit
         i = 2
       else #stay in suit
         i += 1
       end
     end
+    initial_shuffle
+  end
 
-    deck.each do |card|
+
+  def self.initial_shuffle
+    $deck.shuffle!
+  end
+
+
+end
+
+class War
+
+
+  $card_deck = Card.new_deck
+
+  def self.print_pile(pile)
+    pile.each do |card|
       puts card.value
       puts card.suit
       puts " "
     end
   end
 
-end
+  print_pile($card_deck)
 
-class War
-  card_deck = Card.new_deck
-  print card_deck
-=begin
-  $p1_deck = new.Array
-  $p2_deck = new.Array
-  $p1_pile = new.Array
-  $p1_pile = new.Array
+  #print card_deck
+#=begin
+  #shuffle deck of cards
+
+#=begin
+  $p1_deck ||= Array.new
+  $p2_deck ||= Array.new
+  $p1_pile ||= Array.new
+  $p1_pile ||= Array.new
 
   def shuffle_hand(player)
     if player == 1
@@ -90,7 +107,7 @@ class War
 
   end
 
-    $cards_at_stake = new.Array
+    $cards_at_stake ||= Array.new
 
 
   def battle
@@ -107,5 +124,5 @@ class War
 
     end
   end
-=end
+#=end
 end
