@@ -92,7 +92,6 @@ class HangMan
     puts "    |  " + $y3 + " " + $y2
     puts "    |  " + $y6 + $y4 + $y5
     puts "    |   " + $y7
-    puts "    |  " + $y8 + " " + $y9
     puts "    |  "+ $y8 + " " + $y9
     puts "____|______"
 
