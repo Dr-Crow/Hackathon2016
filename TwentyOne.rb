@@ -16,13 +16,21 @@ require_relative "Card"
 	end
 	def gameLoop()
 	  while $total <= 21
-		  if gets.chomp == "hit"
+		  cmd = gets.chomp
+		  if cmd == "hit"
 			hit()
-		  elsif gets.chomp == "stop"
+		  elsif cmd == "stop"
 			puts "Your total was " + $total.to_s
+			break
 		  end
 	  end
-	
+		if $total <= 17
+			puts "Not bad, but you can do better!"
+		elsif $total <= 19
+			puts "Pretty close! Good Job!"
+		elsif $total < 21
+			puts "Awesome! Just one away!"
+		end
 	end
 	
 	def hit()
@@ -32,7 +40,11 @@ require_relative "Card"
 		currentCard.toString
 		$total = $total + currentCard.value.to_i
 		puts "Your total is " + $total.to_s
-		
+		if $total == 21
+			puts "21! Congratulations!"
+		elsif $total > 21 
+			puts "Sorry, you went over! Better luck next time!"
+		end
 	end
 	
 
